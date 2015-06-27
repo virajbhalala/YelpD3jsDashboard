@@ -15,7 +15,7 @@ var randomColor = colors[Object.keys(colors)[Math.floor(Math.random() * Object.k
 var particleSettings = {
   "particles": {
     "number": {
-      "value": 130,
+      "value": 180,
       "density": {
         "enable": true,
         "value_area": 400
