@@ -19,42 +19,101 @@ function bubbleChart() {
   // Locations to move bubbles towards, depending
   // on which view mode is selected.
   var center = { x: width / 2, y: height / 2 };
-
+  // 'Games', 'Productivity', 'Weather', 'Shopping', 'Reference',
+  //        'Finance', 'Music', 'Utilities', 'Travel', 'Social Networking',
+  //        'Sports', 'Business', 'Health & Fitness', 'Entertainment',
+  //        'Photo & Video', 'Navigation', 'Education', 'Lifestyle',
+  //        'Food & Drink', 'News', 'Book', 'Medical'
   var stateCenters = {
-    AZ: { x: 3 * width / 16, y: height / 3 },
-    IL: { x: width / 3, y: 2* height / 3 },
-    NC: { x: 3 * width / 8, y: height / 3 },
-    NV: { x: width / 2, y: 2* height / 3 },
-    OH: { x: 5 * width / 8, y: height / 3 },
-    PA: { x: 2 * width / 3, y: 2* height / 3 },
-    WI: { x: 13 * width / 16, y: height / 3 }
-  }
+    Games: { x: 3 * width / 16, y: height / 3 },
+    Productivity: { x: width / 3, y: 2* height / 3 },
+    Weather: { x: 3 * width / 8, y: height / 3 },
+    Shopping: { x: width / 2, y: 2* height / 3 },
+    Reference: { x: 5 * width / 8, y: height / 3 },
+    Finance: { x: 2 * width / 3, y: 2* height / 3 },
+    Music: { x: 13 * width / 16, y: height / 3 },
 
+
+    Utilities: { x: 4 * width / 16, y: height / 3 },
+    Travel: { x: width / 4, y: 2* height / 3 },
+    Sports: { x: 4 * width / 8, y: height / 3 },
+    Business: { x: width / 2, y: 2* height / 3 },
+    Entertainment: { x: 6 * width / 8, y: height / 3 },
+    Navigation: { x: 3 * width / 3, y: 2* height / 3 },
+    Navigation: { x: 15 * width / 16, y: height / 3 },
+
+    Education: { x: 5 * width / 8, y: height / 3 },
+    Lifestyle: { x: width / 4, y: 2* height / 3 },
+    News: { x: 8 * width / 8, y: height / 3 },
+    Book: { x: 6 * width / 3, y: 2* height / 3 },
+    Medical: { x: 20 * width / 16, y: height / 3 },
+
+    'Social Networking': { x: 20 * width / 16, y: height / 3 },
+    'Health & Fitness': { x: 20 * width / 16, y: height / 3 },
+    'Photo & Video': { x: 20 * width / 16, y: height / 3 },
+    'Food & Drink': { x: 20 * width / 16, y: height / 3 }
+
+  }
   var starCenters = {
+    0: { x: width / 3, y: 2* height / 3 },
+    0.5: { x: 3 * width / 8, y: height / 3 },
     1: { x: width / 3, y: 2* height / 3 },
     2: { x: 3 * width / 8, y: height / 3 },
     3: { x: width / 2, y: 2* height / 3 },
     4: { x: 5 * width / 8, y: height / 3 },
-    5: { x: 2 * width / 3, y: 2* height / 3 }
+    5: { x: 2 * width / 3, y: 2* height / 3 },
+    1.5: { x: width / 3, y: 2* height / 3 },
+    2.5: { x: 3 * width / 8, y: height / 3 },
+    3.5: { x: width / 2, y: 2* height / 3 },
+    4.5: { x: 5 * width / 8, y: height / 3 }
   }
 
   // X locations of the state titles.
   var stateTitle = {
-    AZ: { x: width / 10, y: height / 8 },
-    IL: { x: 9 * width / 40, y: 9 * height / 20 },
-    NC: { x: 7 * width / 20, y: height / 8 },
-    NV: { x: width / 2, y: 9 * height / 20 },
-    OH: { x: 13 * width / 20, y: height / 8 },
-    PA: { x: 31 * width / 40, y: 9 * height / 20 },
-    WI: { x: 9 * width / 10, y: height / 8 }
+    Games: { x: width / 10, y: height / 8 },
+    Productivity: { x: 9 * width / 40, y: 9 * height / 20 },
+    Weather: { x: 7 * width / 20, y: height / 8 },
+    Shopping: { x: width / 2, y: 9 * height / 20 },
+    Reference: { x: 13 * width / 20, y: height / 8 },
+    Finance: { x: 31 * width / 40, y: 9 * height / 20 },
+    Music: { x: 9 * width / 10, y: height / 8 },
+
+    Utilities: { x: 4 * width / 16, y: height / 3 },
+    Travel: { x: width / 4, y: 2* height / 3 },
+    Sports: { x: 4 * width / 8, y: height / 3 },
+    Business: { x: width / 2, y: 2* height / 3 },
+    Entertainment: { x: 6 * width / 8, y: height / 3 },
+    Navigation: { x: 3 * width / 3, y: 2* height / 3 },
+    Navigation: { x: 15 * width / 16, y: height / 3 },
+
+    Education: { x: 5 * width / 8, y: height / 3 },
+    Lifestyle: { x: width / 4, y: 2* height / 3 },
+    News: { x: 8 * width / 8, y: height / 3 },
+    Book: { x: 6 * width / 3, y: 2* height / 3 },
+    Medical: { x: 20 * width / 16, y: height / 3 },
+    'Social Networking': { x: 20 * width / 16, y: height / 3 },
+    'Health & Fitness': { x: 20 * width / 16, y: height / 3 },
+    'Photo & Video': { x: 20 * width / 16, y: height / 3 },
+    'Food & Drink': { x: 20 * width / 16, y: height / 3 }
   }
 
   var starTitle = {
-    1: { x: width / 5, y: 8 * height / 20 },
-    2: { x: 13 * width / 40, y: height / 9 },
-    3: { x: width / 2, y: 8 * height / 20 },
-    4: { x: 27 * width / 40, y: height / 9 },
-    5: { x: 4 * width / 5, y: 8 * height / 20 }
+    // 1: { x: width / 5, y: 8 * height / 20 },
+    // 2: { x: 13 * width / 40, y: height / 9 },
+    // 3: { x: width / 2, y: 8 * height / 20 },
+    // 4: { x: 27 * width / 40, y: height / 9 },
+    // 5: { x: 4 * width / 5, y: 8 * height / 20 }
+    0: { x: width / 3, y: 2* height / 3 },
+    0.5: { x: 3 * width / 8, y: height / 3 },
+    1: { x: width / 3, y: 2* height / 3 },
+    2: { x: 3 * width / 8, y: height / 3 },
+    3: { x: width / 2, y: 2* height / 3 },
+    4: { x: 5 * width / 8, y: height / 3 },
+    5: { x: 2 * width / 3, y: 2* height / 3 },
+    1.5: { x: width / 3, y: 2* height / 3 },
+    2.5: { x: 3 * width / 8, y: height / 3 },
+    3.5: { x: width / 2, y: 2* height / 3 },
+    4.5: { x: 5 * width / 8, y: height / 3 }
   }
 
   // @v4 strength to apply to the position forces
@@ -69,14 +128,14 @@ function bubbleChart() {
    * Charge function that is called for each node.
    * As part of the ManyBody force.
    * This is what creates the repulsion between nodes.
-   * 
+   *
    * Charge is proportional to the diameter of the
    * circle (which is stored in the radius attribute
    * of the circle's associated data.
-   * 
+   *
    * This is done to allow for accurate collision
    * detection with nodes of different sizes.
-   * 
+   *
    * Charge is negative because we want nodes to repel.
    * @v4 Before the charge was a stand-alone attribute
    *  of the force layout. Now we can use it as a separate force!
@@ -102,7 +161,11 @@ function bubbleChart() {
   // Nice looking colors - no reason to buck the trend
   // @v4 scales now have a flattened naming scheme
   var fillColor = d3.scaleOrdinal(d3.schemeCategory20c)
-    .domain(['AZ', 'IL', 'NC', 'NV', 'OH', 'PA', 'WI']);
+    .domain(['Games', 'Productivity', 'Weather', 'Shopping', 'Reference',
+       'Finance', 'Music', 'Utilities', 'Travel', 'Social Networking',
+       'Sports', 'Business', 'Health & Fitness', 'Entertainment',
+       'Photo & Video', 'Navigation', 'Education', 'Lifestyle',
+       'Food & Drink', 'News', 'Book', 'Medical']);
 
   /*
    * This data manipulation function takes the raw data from
@@ -147,7 +210,7 @@ function bubbleChart() {
 
     // sort them to prevent occlusion of smaller nodes.
     myNodes.sort(function (a, b) { return b.reviews - a.reviews; });
-    
+
     return myNodes;
   }
 
@@ -234,7 +297,7 @@ function bubbleChart() {
 
   function nodeStatePosY(d) {
     return stateCenters[d.state].y;
-  }  
+  }
 
   function nodeStarPosX(d) {
     return starCenters[Math.floor(d.stars)].x;
@@ -242,7 +305,7 @@ function bubbleChart() {
 
   function nodeStarPosY(d) {
     return starCenters[Math.floor(d.stars)].y;
-  }  
+  }
 
   /*
    * Sets visualization in "single group mode".
@@ -255,7 +318,7 @@ function bubbleChart() {
     hideTitles('.stars');
 
     d3.selectAll("#bubble_state_annotation").remove()
-    d3.selectAll("#bubble_star_annotation").remove()    
+    d3.selectAll("#bubble_star_annotation").remove()
 
     // @v4 Reset the 'x' and 'y' force to draw the bubbles to the center.
     simulation.force('x', d3.forceX().strength(forceStrength).x(center.x));
@@ -280,7 +343,7 @@ function bubbleChart() {
     d3.select("#bubble_svg").append("g")
       .attr("class", "annotation-group")
       .attr("id", "bubble_state_annotation")
-      .call(bubble_state_makeAnnotations)      
+      .call(bubble_state_makeAnnotations)
 
     // @v4 Reset the 'x' force to draw the bubbles to their year centers
     simulation.force('x', d3.forceX().strength(forceStrength).x(nodeStatePosX));
@@ -299,8 +362,8 @@ function bubbleChart() {
     d3.select("#bubble_svg").append("g")
       .attr("class", "annotation-group")
       .attr("id", "bubble_star_annotation")
-      .call(bubble_star_makeAnnotations)    
-    
+      .call(bubble_star_makeAnnotations)
+
     // @v4 Reset the 'x' force to draw the bubbles to their year centers
     simulation.force('x', d3.forceX().strength(forceStrength).x(nodeStarPosX));
     simulation.force('y', d3.forceY().strength(forceStrength).y(nodeStarPosY));
@@ -331,7 +394,7 @@ function bubbleChart() {
       .attr('x', function (d) { return title[d].x; })
       .attr('y', function (d) { return title[d].y; })
       .attr('text-anchor', 'middle')
-      .text(function (d) { 
+      .text(function (d) {
         if (d == 1) {
           return '⭐';
         } else if (d == 2) {
@@ -343,7 +406,7 @@ function bubbleChart() {
         } else if (d == 5) {
           return '⭐⭐⭐⭐⭐';
         } else {
-          return d; 
+          return d;
         }
       });
   }
