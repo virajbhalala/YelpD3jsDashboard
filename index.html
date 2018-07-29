@@ -39,11 +39,10 @@
 		$(document).ready(function() {
 			$('#fullpage').fullpage({
 				verticalCentered: false,
-				anchors: ['intro', 'datavis', 'yelpdata', 'reviews', 'top25', 'checkins', 'findings', 'ref'],
+				anchors: ['Introduction', '​Overview', 'BubbleChart', 'BarPlots', 'Analysis', 'References', 'findings', 'ref'],
 				navigation: true,
 				navigationPosition: 'right',
-				navigationTooltips: ['Introduction', '​About the Visualization', 'Yelp Dataset', 'Reviews Overview', 'Top 25 Categories', 'NV Checkins',
-					'Findings', 'References']
+				navigationTooltips: ['Introduction', '​Overview', 'BubbleChart', 'BarPlots', 'Analysis', 'References']
 			});});
 	</script>
 
@@ -59,7 +58,7 @@
 	<div class="section" id="about">
 		<div id="content_div">
 			<h1>Overview</h1>
-			<p>This project uses hybrid structure of interactive slideshow to build this presentation using fullpage.js. It allows user to visualize Apple’s App Store dataset obtained from Kaggle.com. This dataset contains various categorical and continuous data about different mobile application. This visualization uses fixed dimension and works best if used in 1280x800 or more pixels. This dataset have total 10,000 apps reviews. In order to efficiently load bubble chart, we sampled and used data with size of 1000 records in our bubble chart. In the bar chart, we used full dataset and pre aggregated data for each category.</p>
+			<p>This project uses hybrid structure of interactive slideshow to build this presentation using fullpage.js. It allows user to visualize Apple’s App Store dataset obtained from Kaggle.com. This dataset contains various categorical and continuous data about different mobile applications. This visualization uses fixed dimension and works best if used in 1280x800 or more pixels. This dataset have total 10,000 apps reviews. In order to efficiently load bubble chart, we sampled and used data with size of 1000 records in our bubble chart. In the bar chart, we used full dataset and pre aggregated data for each category.</p>
 			<h2>Scenes</h2>
 			<p>The slides in this slideshow corresponds to scenes. User can scroll up and down or use up and down keys to navigate through different slides in this presentation. User can also keep track of the slide that they are in in by observing page navigation dots on the right side of the screen, and one can also click on any dots to jump to that slide directly. Furthermore, user is also able to interact with any d3 plots that is explained below.</p>
 			<h2>Annotations</h2>
@@ -69,19 +68,7 @@
 
 		</div>
 	</div>
-	<!-- <div class="section" id="survey">
-		<div id="content_div">
-			<h1>The Yelp Dataset</h1>
-			<p>​​The restaurant business is an enormous industry where understanding your clients and their behavioural patterns may give prospective
-				new restaurant owners a much needed head start. This interactive slideshow dives into the publicly available Yelp Academic Dataset
-				which includes a large set of reviews client interactions across multiple industries and regions. We will focus on restaurants within
-				the United States in order to better understand client interactions.</p><br />
-			<p>Assumptions are made in the positive correlation between the number of reviews and the popularity of a business. This is then tied with
-				the assumption of the positive correlation between number of check-ins and the popularity of a business. By focusing on restaurants
-				which have large number of reviews, check-ins and high star rating, we will be able to understand the type of restaurant to invest
-				into.</p>
-		</div>
-	</div> -->
+
 	<div class="section" id="background_bw">
 		<div id="bubble_title"><h1>Overview of App Store's Apps Reviews</h1></div>
 		<div id="bubble_content">
@@ -99,16 +86,7 @@
 		</div>
 	</div>
 	<div class="section" id="background_bw">
-		<!-- <div id="zsb_title"><h1>Top 25 Most Reviewed Restaurants</h1></div>
-		<div id="zsb_content">
-			<div id="zsb_text">
-				<p>​When the categories are consolidated into the Top 24 + Others, we can see that American New is the most reviewed restaurant
-					category. The spread between states do not seem to affect the ranking of restaurant categories either.</p>
-			</div>
-			<div id="zsb_container">
-				<div id="zoomable_sunburst"></div>
-			</div>
-		</div> -->
+
     <div id="zsb_title"><h1>Top 25 Most Reviewed Restaurants</h1></div>
     <style>
 
@@ -117,7 +95,7 @@
     }
 
     </style>
-    <svg width="1028" height="500"></svg>
+    <svg width="1500" height="500"></svg>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script>
 
@@ -142,7 +120,7 @@
     var z = d3.scaleOrdinal()
         .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
-    d3.csv("./data/bar.csv", function(d, i, columns) {
+    d3.csv("./data/bar2.csv", function(d, i, columns) {
       for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
       return d;
     }, function(error, data) {
@@ -150,7 +128,7 @@
 
       var keys = data.columns.slice(1);
 
-      x0.domain(data.map(function(d) { return d.State; }));
+      x0.domain(data.map(function(d) { return d.prime_genre; }));
       x1.domain(keys).rangeRound([0, x0.bandwidth()]);
       y.domain([0, d3.max(data, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice();
 
@@ -159,7 +137,7 @@
         .data(data)
         .enter().append("g")
         .attr("class","bar")
-        .attr("transform", function(d) { return "translate(" + x0(d.State) + ",0)"; })
+        .attr("transform", function(d) { return "translate(" + x0(d.prime_genre) + ",0)"; })
         .selectAll("rect")
         .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
         .enter().append("rect")
@@ -184,7 +162,7 @@
           .attr("fill", "#000")
           .attr("font-weight", "bold")
           .attr("text-anchor", "start")
-          .text("Population");
+          .text("Counts");
 
       var legend = g.append("g")
           .attr("font-family", "sans-serif")
@@ -196,7 +174,7 @@
           .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
       legend.append("rect")
-          .attr("x", width + 250)
+          .attr("x", width + 650)
           .attr("width", 15)
           .attr("height", 15)
           .attr("fill", z)
@@ -205,7 +183,7 @@
           .on("click",function(d) { update(d) });
 
       legend.append("text")
-          .attr("x", width + 240)
+          .attr("x", width + 640)
           .attr("y", 9.5)
           .attr("dy", "0.32em")
           .text(function(d) { return d; });
@@ -323,32 +301,30 @@
 		<div id="content_div">
 			<h1>Analysis</h1>
 			<p>​The bubble chart helps us to effectively visualize distribution of sample of apps by categories and rating. This graph can help readers to discover many different things at the higher level. For example, it can help reader to discover which category is niche or broad, and which categories have more or less competition.</p>
-      <p>The bar chart helps reader to visualize aggregated continuous data grouped by categories. Users can compare and derive different information in different categories </p>
+      <br/>
+      <p>The bar chart helps reader to visualize aggregated continuous data grouped by categories. Users can compare and derive different information in different categories such average supported language, average price, average user rating, and average supported devices. Using this information, we discovered that apps in shopping gives the best services by looking at average device supported and average langauges supported and has the one the lowest average price.  </p>
     </div>
 	</div>
 	<div class="section" id="acks">
 		<div id="acks_div">
 			<h1>References</h1>
-			<h2>Github Project</h2>
+			<!-- <h2>Github Project</h2>
 			<ul>
-				<li><a href='https://github.com/stanleykylee/cs498-ddv-final' target='_blank'>CS498 DDV Final Project</a></li>
-			</ul>
+				<li><a href='https://github.com/virajbhalala/virajbhalala.github.io' target='_blank'> Source Code</a></li>
+			</ul> -->
 			<h2>Dataset</h2>
 			<ul>
 				<li><a href='https://www.kaggle.com/ramamet4/app-store-apple-data-set-10k-apps/version/2' target='_blank'>Apple App Store Data</a></li>
 			</ul>
 			<h2>Bubble Chart</h2>
 			<ul>
-				<li><a href='https://bl.ocks.org/john-guerra/0d81ccfd24578d5d563c55e785b3b40a' target='_blank'>
-					Bubble Chart d3 v4 Github Gist by John Alexis Guerra Gomez</a></li>
-				<li><a href='https://github.com/vlandham/bubble_chart_v4' target='_blank'>Animated Bubble Chart by Jim Vallandingham</a></li>
-				<li><a href='https://github.com/d3/d3-hierarchy/blob/master/README.md#pack' target='_blank'>d3 API documents on d3-hierarchy - packs</a></li>
+
+				<li><a href='https://github.com/vlandham/bubble_chart_v4' target='_blank'>Animated Bubble Chart</a></li>
 			</ul>
 
       <h2>Bar Chart</h2>
       <ul>
         <li><a href='https://bl.ocks.org/Andrew-Reid/64a6c1892d1893009d2b99b8abee75a7' target='_blank'>Grouped Bar Chart Toggle Series by Andrew Reid</a></li>
-
       </ul>
 
 		</div>
