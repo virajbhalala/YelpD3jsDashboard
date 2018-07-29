@@ -4,13 +4,13 @@ const bubble_state_annotations = [
     type: d3.annotationLabel,
     note: {
     title: "Majority of Reviews",
-    label: "The state of NV contains the majority of the Yelp Dataset reviews",
+    label: "Games category/genre has Majority of the reviews in the sample data",
     wrap: 190
     },
-    x: 500,
-    y: 550,
-    dy: -160,
-    dx: -120
+    x: 250,
+    y: 250,
+    dy: 0,
+    dx: 0
 }]
 
 const bubble_state_makeAnnotations = d3.annotation()
@@ -21,8 +21,8 @@ const bubble_star_annotations = [
 {
     type: d3.annotationLabel,
     note: {
-    title: "Average 2-4 Stars",
-    label: "Regardless of state, the average for star ratings is balanced between 2 to 4 stars",
+    title: "Majority of the Ratings",
+    label: "Majority of the ratings are between 3 to 5 regardless of apps' category",
     wrap: 190
     },
     x: 500,
