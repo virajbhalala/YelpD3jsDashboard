@@ -174,7 +174,7 @@
           .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
       legend.append("rect")
-          .attr("x", width + 650)
+          .attr("x", width + 350)
           .attr("width", 15)
           .attr("height", 15)
           .attr("fill", z)
@@ -183,7 +183,7 @@
           .on("click",function(d) { update(d) });
 
       legend.append("text")
-          .attr("x", width + 640)
+          .attr("x", width + 340)
           .attr("y", 9.5)
           .attr("dy", "0.32em")
           .text(function(d) { return d; });
