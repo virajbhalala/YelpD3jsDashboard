@@ -3,8 +3,8 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>CS498 DDV Final D3.js Visualization - Stanley Lee</title>
-	<meta name="author" content="Stanley Lee" />
+	<title>CS498 DDV Final D3.js Visualization</title>
+	<meta name="author" content="Viraj Bhalala" />
 	<meta name="description" content="fullPage full-screen backgrounds." />
 	<meta name="keywords"  content="fullpage,jquery,demo,screen,fullscreen,backgrounds,full-screen" />
 	<meta name="Resource-type" content="Document" />
@@ -52,50 +52,24 @@
 <div id="fullpage">
 	<div class="section" id="title">
 		<div id="title_text">
-			<h1>Diving into the Restaunt Business</h1>
-			<h3>a d3.js data visualization project using the Yelp Academic dataset<br/>Stanley Lee - UIUC CS498 Data Visualization</h3>
+			<h1>Analyzing Apple App Store Data using D3.js</h1>
+			<h3>UIUC CS498 Data Visualization</h3>
 		</div>
 	</div>
 	<div class="section" id="about">
 		<div id="content_div">
-			<h1>About the Visualization</h1>
-			<p>This visualization is an interactive slideshow which takes the user through the Dataset of the 9th Round of the Yelp Academic
-				Dataset Challenge. The dataset itself contains the Yelp reviews and aggregated check-ins over time of 144 thousand businesses
-				located throughout various metropolitans across the globe. This visualization focuses on the data from the United States which
-				includes the following cities: Pittsburgh, Charlotte, Urbana-Champaign, Phoenix, Las Vegas, Madison, Cleveland.</p>
-			<h2>Recommended Settings</h2>
-			<p>As the visualizations use a preset static canvas of 1024x768 pixels, the viewing size of the interactive visualization is at
-				least 1280x800 pixels to accommodate the surrounding text and scene elements.</p>
-			<h2>Managing the Dataset</h2>
-			<p>With such a large dataset, creating a visualization with the raw data turned out to be very difficult. The first step for created
-				this visualization was to process the dataset and focus on the data pertaining restaurants in the United States only.</p>
-			<h2>Templates Scene</h2>
-			<p>The use of CSS and FullPage.js allows for a cohesive template look for the interactive visualization. Each page is transitioned
-				using the same method and text elements are kept the same (font size and family). Additionally there is a page navigation bar
-				on the right side which allows users to skip between different slides. The tooltips which are triggered when a user moves their
-				mouse over the navigation alters the display parameters for each navigation menu item.</p>
+			<h1>Overview</h1>
+			<p>This project uses hybrid structure of interactive slideshow to build this presentation using fullpage.js. It allows user to visualize Apple’s App Store dataset obtained from Kaggle.com. This dataset contains various categorical and continuous data about different mobile application. This visualization uses fixed dimension and works best if used in 1280x800 or more pixels. This dataset have total 10,000 apps reviews. In order to efficiently load bubble chart, we sampled and used data with size of 1000 records in our bubble chart. In the bar chart, we used full dataset and pre aggregated data for each category.</p>
+			<h2>Scenes</h2>
+			<p>The slides in this slideshow corresponds to scenes. User can scroll up and down or use up and down keys to navigate through different slides in this presentation. User can also keep track of the slide that they are in in by observing page navigation dots on the right side of the screen, and one can also click on any dots to jump to that slide directly. Furthermore, user is also able to interact with any d3 plots that is explained below.</p>
 			<h2>Annotations</h2>
-			<p>Annotations have been used in all three visualizations with a similar process of using triggers to change the hidden paramenter of
-				the annotation. For example, the Line Chart Visualization has an initial state of the hidden parameter which controls the display
-				of the annotations set to false. As a user uses the brush bar to trigger changes to the line chart visualization x-axis
-				parameters, it also changes this hidden parameter to true. In turn the annotations disappear until the user resets the brush bar
-				to zero - thus zooming out back to the default visualization parameters.</p>
+			<p>Various annotation has been used in the bubble chart. The first annotation appears when user clicks ”Reviews by Category” button to group data points by its categories. This annotation helps to highlight to highlight Games category that has majority of the reviews. The second annotation appears when user clicks “Reviews by Rating”. This annotation highlights ratings that appears most and indicates that there is no discovered relationship between categories and ratings. Furthermore, user can also find detailed information of each bubble by placing mouse pointer on each bubble which triggers annotation for that data point.</p>
 			<h2>Parameters and Triggers</h2>
-			<p>Both parameters and triggers are used in all of the three visualizations. For the Bubble Chart Visualization, parameters for the
-				x,y co-ordinates of each bubble are set to an initial central position for the All Reviews Visualization. As a user selects menu
-				items to chose between All Reviews, Reviews by State and Reviews by Stars, it triggers the change of bubble’s x,y co-ordinates
-				parameter to their respective groupings.</p><br />
-			<p>In Zoomable Sunburst Visualization, each mouse click on a region is a trigger for the path and arc parameters. By clicking within
-				a region, you can zoom into the data to take a look at the information underneath. Clicking the centre circle will trigger the
-				parameters to return to its values one up in the hierarchy.</p><br />
-			<p>For Line Chart Visualization, parameters are set for each Restaurant Category. These parameters are triggered to be updated as the
-				mouse moves over the visualization, providing the user with a snapshot of the amount of check-ins in a given time. A secondary
-				parameter and trigger set is the brush bar below the line chart. This bar allows the user to zoom into the data to show a closer
-				look of the data. By clicking a set space on the brush bar, it triggers the x-axis parameter of the line chart to be updated to a
-				ratio of the same selected section of the brush bar.</p>
+			<p>TParameters and triggers are used in both visualization. For the bubble chart, parameters of x and y co-ordinates of each bubble are set to initial position in All Review Visualization. When user clicks on Reviews by Category or Reviews by Rating, visualization triggers the change of x and y co-ordinates parameters in order to group data points by selected category type. For the bar chart, parameter is set by data vaiables that user is interested to visualize. When user clicks on any data variable in the legend box, bars and y values triggers based on selected data variable.  </p>
+
 		</div>
 	</div>
-	<div class="section" id="survey">
+	<!-- <div class="section" id="survey">
 		<div id="content_div">
 			<h1>The Yelp Dataset</h1>
 			<p>​​The restaurant business is an enormous industry where understanding your clients and their behavioural patterns may give prospective
@@ -107,25 +81,25 @@
 				which have large number of reviews, check-ins and high star rating, we will be able to understand the type of restaurant to invest
 				into.</p>
 		</div>
-	</div>
+	</div> -->
 	<div class="section" id="background_bw">
-		<div id="bubble_title"><h1>Overview of All Reviewed Restaurants</h1></div>
+		<div id="bubble_title"><h1>Overview of App Store's Apps Reviews</h1></div>
 		<div id="bubble_content">
-			<div id="bubble_text">
+			<!--<div id="bubble_text">
 				<p>​We are able to see that the bulk of the reviews are from NV with a star rating between 2-4.</p>
-			</div>
+			</div>-->
 			<div id="bubble_container">
 				<div id="toolbar">
 					<a href="#" id="all" class="button active">All Reviews</a>
-					<a href="#" id="state" class="button">Reviews By State</a>
-					<a href="#" id="stars" class="button">Reviews By Average Star Ratings</a>
+					<a href="#" id="state" class="button">Reviews By Category</a>
+					<a href="#" id="stars" class="button">Reviews By Ratings</a>
 				</div>
 				<div id="vis"></div>
 			</div>
 		</div>
 	</div>
 	<div class="section" id="background_bw">
-		<div id="zsb_title"><h1>Top 25 Most Reviewed Restaurants</h1></div>
+		<!-- <div id="zsb_title"><h1>Top 25 Most Reviewed Restaurants</h1></div>
 		<div id="zsb_content">
 			<div id="zsb_text">
 				<p>​When the categories are consolidated into the Top 24 + Others, we can see that American New is the most reviewed restaurant
@@ -134,9 +108,205 @@
 			<div id="zsb_container">
 				<div id="zoomable_sunburst"></div>
 			</div>
-		</div>
+		</div> -->
+    <div id="zsb_title"><h1>Top 25 Most Reviewed Restaurants</h1></div>
+    <style>
+
+    .axis .domain {
+      display: none;
+    }
+
+    </style>
+    <svg width="1028" height="500"></svg>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script>
+
+    var svg = d3.select("svg"),
+        margin = {top: 20, right: 20, bottom: 30, left: 40},
+        width = +svg.attr("width") - margin.left - margin.right,
+        height = +svg.attr("height") - margin.top - margin.bottom,
+        g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    // The scale spacing the groups:
+    var x0 = d3.scaleBand()
+        .rangeRound([0, width])
+        .paddingInner(0.1);
+
+    // The scale for spacing each group's bar:
+    var x1 = d3.scaleBand()
+        .padding(0.05);
+
+    var y = d3.scaleLinear()
+        .rangeRound([height, 0]);
+
+    var z = d3.scaleOrdinal()
+        .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+    d3.csv("./data/bar.csv", function(d, i, columns) {
+      for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
+      return d;
+    }, function(error, data) {
+      if (error) throw error;
+
+      var keys = data.columns.slice(1);
+
+      x0.domain(data.map(function(d) { return d.State; }));
+      x1.domain(keys).rangeRound([0, x0.bandwidth()]);
+      y.domain([0, d3.max(data, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice();
+
+     g.append("g")
+        .selectAll("g")
+        .data(data)
+        .enter().append("g")
+        .attr("class","bar")
+        .attr("transform", function(d) { return "translate(" + x0(d.State) + ",0)"; })
+        .selectAll("rect")
+        .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
+        .enter().append("rect")
+          .attr("x", function(d) { return x1(d.key); })
+          .attr("y", function(d) { return y(d.value); })
+          .attr("width", x1.bandwidth())
+          .attr("height", function(d) { return height - y(d.value); })
+          .attr("fill", function(d) { return z(d.key); });
+
+      g.append("g")
+          .attr("class", "axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(d3.axisBottom(x0));
+
+      g.append("g")
+          .attr("class", "y axis")
+          .call(d3.axisLeft(y).ticks(null, "s"))
+        .append("text")
+          .attr("x", 2)
+          .attr("y", y(y.ticks().pop()) + 0.5)
+          .attr("dy", "0.32em")
+          .attr("fill", "#000")
+          .attr("font-weight", "bold")
+          .attr("text-anchor", "start")
+          .text("Population");
+
+      var legend = g.append("g")
+          .attr("font-family", "sans-serif")
+          .attr("font-size", 10)
+          .attr("text-anchor", "end")
+        .selectAll("g")
+        .data(keys.slice().reverse())
+        .enter().append("g")
+          .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+      legend.append("rect")
+          .attr("x", width + 250)
+          .attr("width", 15)
+          .attr("height", 15)
+          .attr("fill", z)
+          .attr("stroke", z)
+          .attr("stroke-width",2)
+          .on("click",function(d) { update(d) });
+
+      legend.append("text")
+          .attr("x", width + 240)
+          .attr("y", 9.5)
+          .attr("dy", "0.32em")
+          .text(function(d) { return d; });
+
+      var filtered = [];
+
+      ////
+      //// Update and transition on click:
+      ////
+
+      function update(d) {
+
+        //
+        // Update the array to filter the chart by:
+        //
+
+        // add the clicked key if not included:
+        if (filtered.indexOf(d) == -1) {
+         filtered.push(d);
+          // if all bars are un-checked, reset:
+          if(filtered.length == keys.length) filtered = [];
+        }
+        // otherwise remove it:
+        else {
+          filtered.splice(filtered.indexOf(d), 1);
+        }
+
+        //
+        // Update the scales for each group(/states)'s items:
+        //
+        var newKeys = [];
+        keys.forEach(function(d) {
+          if (filtered.indexOf(d) == -1 ) {
+            newKeys.push(d);
+          }
+        })
+        x1.domain(newKeys).rangeRound([0, x0.bandwidth()]);
+        y.domain([0, d3.max(data, function(d) { return d3.max(keys, function(key) { if (filtered.indexOf(key) == -1) return d[key]; }); })]).nice();
+
+        // update the y axis:
+                svg.select(".y")
+                .transition()
+                .call(d3.axisLeft(y).ticks(null, "s"))
+                .duration(500);
+
+
+        //
+        // Filter out the bands that need to be hidden:
+        //
+        var bars = svg.selectAll(".bar").selectAll("rect")
+          .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
+
+       bars.filter(function(d) {
+             return filtered.indexOf(d.key) > -1;
+          })
+          .transition()
+          .attr("x", function(d) {
+            return (+d3.select(this).attr("x")) + (+d3.select(this).attr("width"))/2;
+          })
+          .attr("height",0)
+          .attr("width",0)
+          .attr("y", function(d) { return height; })
+          .duration(500);
+
+        //
+        // Adjust the remaining bars:
+        //
+        bars.filter(function(d) {
+            return filtered.indexOf(d.key) == -1;
+          })
+          .transition()
+          .attr("x", function(d) { return x1(d.key); })
+          .attr("y", function(d) { return y(d.value); })
+          .attr("height", function(d) { return height - y(d.value); })
+          .attr("width", x1.bandwidth())
+          .attr("fill", function(d) { return z(d.key); })
+          .duration(500);
+
+
+        // update legend:
+        legend.selectAll("rect")
+          .transition()
+          .attr("fill",function(d) {
+            if (filtered.length) {
+              if (filtered.indexOf(d) == -1) {
+                return z(d);
+              }
+               else {
+                return "white";
+              }
+            }
+            else {
+             return z(d);
+            }
+          })
+          .duration(100);
+      }
+    });
+    </script>
 	</div>
-	<div class="section" id="background_bw">
+	<!-- <div class="section" id="background_bw">
 		<div id="linechart_title"><h1>Customer Checkins per Hour per Category</h1></div>
 		<div id="linechart_content">
 			<div id="linechart_text">
@@ -148,15 +318,13 @@
 				<div id="linechart"></div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<div class="section" id="analytics">
 		<div id="content_div">
-			<h1>Findings</h1>
-			<p>​The initial analysis based on the Yelp Academic Dataset shows that a prospective restaurant owner should choose to open an
-				<span id="emphasize">American New</span> styled restaurant. The location should be in <span id="emphasize">NV</span> where
-				there were the most amount of reviews logged. The restaurant should focus of the <span id="emphasize">evening</span> and
-				<span id="emphasize">weekend</span> crowds with possibly reducing staffing during the day as the amount of people tapers off.</p>
-		</div>
+			<h1>Analysis</h1>
+			<p>​The bubble chart helps us to effectively visualize distribution of sample of apps by categories and rating. This graph can help readers to discover many different things at the higher level. For example, it can help reader to discover which category is niche or broad, and which categories have more or less competition.</p>
+      <p>The bar chart helps reader to visualize aggregated continuous data grouped by categories. Users can compare and derive different information in different categories </p>
+    </div>
 	</div>
 	<div class="section" id="acks">
 		<div id="acks_div">
@@ -186,18 +354,13 @@
 				<li><a href='https://github.com/vlandham/bubble_chart_v4' target='_blank'>Animated Bubble Chart by Jim Vallandingham</a></li>
 				<li><a href='https://github.com/d3/d3-hierarchy/blob/master/README.md#pack' target='_blank'>d3 API documents on d3-hierarchy - packs</a></li>
 			</ul>
-			<h2>Zoomable Sunburst</h2>
-			<ul>
-				<li><a href='https://gist.github.com/mchelen/1481545d38d0304b4d54' target='_blank'>d3.js hierarchical object from csv by Mike Chelen</a></li>
-				<li><a href='https://gist.github.com/mbostock/4348373' target='_blank'>Zoomable Sunburst by Mike Bostock</a></li>
-				<li><a href='https://gist.github.com/denjn5/3b74baf5edc4ac93d5e487136481c601' target='_blank'>
-					Smooth Updates and Sorting by David Richards</a></li>
-			</ul>
-			<h2>Line Chart</h2>
-			<ul>
-				<li><a href='https://gist.github.com/DStruths/9c042e3a6b66048b5bd4' target='_blank'>
-					d3.js Multi-series line chart interactive by DStruths</a></li>
-			</ul>
+
+      <h2>Bar Chart</h2>
+      <ul>
+        <li><a href='https://bl.ocks.org/Andrew-Reid/64a6c1892d1893009d2b99b8abee75a7' target='_blank'>Grouped Bar Chart Toggle Series by Andrew Reid</a></li>
+
+      </ul>
+
 		</div>
 	</div>
 </div>

@@ -1,5 +1,5 @@
 // Annotations for Bubble Chart
-const bubble_state_annotations = [         
+const bubble_state_annotations = [
 {
     type: d3.annotationLabel,
     note: {
@@ -36,7 +36,7 @@ const bubble_star_makeAnnotations = d3.annotation()
     .annotations(bubble_star_annotations)
 
 // Annotations for Zoomable Sunburst
-const zoom_annotations = [       
+const zoom_annotations = [
 {
     type: d3.annotationLabel,
     note: {
@@ -97,7 +97,7 @@ const line_annotations = [
     y: 125,
     dy: 0,
     dx: 0
-},          
+},
 {
     type: d3.annotationLabel,
     note: {

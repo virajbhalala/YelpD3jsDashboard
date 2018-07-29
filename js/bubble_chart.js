@@ -19,101 +19,90 @@ function bubbleChart() {
   // Locations to move bubbles towards, depending
   // on which view mode is selected.
   var center = { x: width / 2, y: height / 2 };
-  // 'Games', 'Productivity', 'Weather', 'Shopping', 'Reference',
-  //        'Finance', 'Music', 'Utilities', 'Travel', 'Social Networking',
-  //        'Sports', 'Business', 'Health & Fitness', 'Entertainment',
-  //        'Photo & Video', 'Navigation', 'Education', 'Lifestyle',
-  //        'Food & Drink', 'News', 'Book', 'Medical'
+
   var stateCenters = {
-    Games: { x: 3 * width / 16, y: height / 3 },
-    Productivity: { x: width / 3, y: 2* height / 3 },
-    Weather: { x: 3 * width / 8, y: height / 3 },
-    Shopping: { x: width / 2, y: 2* height / 3 },
-    Reference: { x: 5 * width / 8, y: height / 3 },
-    Finance: { x: 2 * width / 3, y: 2* height / 3 },
-    Music: { x: 13 * width / 16, y: height / 3 },
+    Games: { x: 1.3*width / 40+100, y: height / 8 +100 },
+    Productivity: { x: 4*width / 20, y: height / 8+100  },
+    Weather: { x: 7 * width / 20, y: height / 8+100 },
+    Shopping: { x: 10*width / 20, y: height / 8+100  },
+    Reference: { x: 13 * width / 20, y: height / 8+100 },
+    Finance: { x: 16 * width / 20, y: height / 8 +100},
+    Music: { x: 18 * width / 20, y: height / 8+100 },
 
 
-    Utilities: { x: 4 * width / 16, y: height / 3 },
-    Travel: { x: width / 4, y: 2* height / 3 },
-    Sports: { x: 4 * width / 8, y: height / 3 },
-    Business: { x: width / 2, y: 2* height / 3 },
-    Entertainment: { x: 6 * width / 8, y: height / 3 },
-    Navigation: { x: 3 * width / 3, y: 2* height / 3 },
-    Navigation: { x: 15 * width / 16, y: height / 3 },
+    Utilities: { x: 1.3*width / 40+50, y: height / 2+30 },
+    Travel: { x: 4*width / 20, y: height / 2+30  },
+    Sports: { x: 7 * width / 20, y: height / 2+30  },
+    Business: { x:10*width / 20, y:height / 2+30  },
+    Entertainment: { x:  13 * width / 20, y: height / 2+50  },
+    Navigation: { x: 16 * width / 20-30, y: height / 2+30  },
+    Education: { x: 18 * width / 20-30, y: height / 2+30 },
 
-    Education: { x: 5 * width / 8, y: height / 3 },
-    Lifestyle: { x: width / 4, y: 2* height / 3 },
-    News: { x: 8 * width / 8, y: height / 3 },
-    Book: { x: 6 * width / 3, y: 2* height / 3 },
-    Medical: { x: 20 * width / 16, y: height / 3 },
-
-    'Social Networking': { x: 20 * width / 16, y: height / 3 },
-    'Health & Fitness': { x: 20 * width / 16, y: height / 3 },
-    'Photo & Video': { x: 20 * width / 16, y: height / 3 },
-    'Food & Drink': { x: 20 * width / 16, y: height / 3 }
+    Lifestyle: { x: 1.3*width / 40+40, y: height/1.5  },
+    News: { x: 2*width / 20+30, y: height/1.5 },
+    Book: { x: 4 * width / 20, y: height/1.5 },
+    Medical: { x: 6 * width / 20, y: height/1.5 },
+    'Social Networking': { x: 9*width / 20, y: height/1.5 +30},
+    'Health & Fitness': { x: 12 * width / 20, y: height/1.5 },
+    'Photo & Video': { x: 15 * width / 20-20, y: height/1.5 },
+    'Food & Drink': { x: 18 * width / 20-20, y: height/1.5}
 
   }
   var starCenters = {
-    0: { x: width / 3, y: 2* height / 3 },
-    0.5: { x: 3 * width / 8, y: height / 3 },
-    1: { x: width / 3, y: 2* height / 3 },
-    2: { x: 3 * width / 8, y: height / 3 },
-    3: { x: width / 2, y: 2* height / 3 },
-    4: { x: 5 * width / 8, y: height / 3 },
-    5: { x: 2 * width / 3, y: 2* height / 3 },
-    1.5: { x: width / 3, y: 2* height / 3 },
-    2.5: { x: 3 * width / 8, y: height / 3 },
-    3.5: { x: width / 2, y: 2* height / 3 },
-    4.5: { x: 5 * width / 8, y: height / 3 }
+    "0": { x: 3* width / 20, y:  height / 8+100 },
+    "0.5": { x: 5 * width / 20, y: height / 8+100 },
+    "1": { x: 7* width / 20, y: height / 8 +100},
+    "1.5": { x: 10 * width / 20, y: height / 8+100 },
+    "2": { x: 13*width / 20, y: height / 8 +100},
+    "2.5": { x: 16* width / 20, y:  height / 8+100 },
+    "3": { x: 3 * width / 20, y: height / 2+150 },
+    "3.5": { x: 7* width / 20, y: height / 2 +150},
+    "4": { x: 10 * width / 20, y: height / 2 +150},
+    "4.5": { x: 13*width / 20, y: height / 2 +150},
+    "5": { x: 16 * width / 20, y: height / 2+150}
   }
 
   // X locations of the state titles.
   var stateTitle = {
-    Games: { x: width / 10, y: height / 8 },
-    Productivity: { x: 9 * width / 40, y: 9 * height / 20 },
-    Weather: { x: 7 * width / 20, y: height / 8 },
-    Shopping: { x: width / 2, y: 9 * height / 20 },
+    Games: { x: 1.5*width / 40, y: height / 8 },
+    Productivity: { x: 5 * width / 20, y: height / 8  },
+    Weather: { x: 8 * width / 20, y: height / 8 },
+    Shopping: { x: 10*width / 20, y: height / 8  },
     Reference: { x: 13 * width / 20, y: height / 8 },
-    Finance: { x: 31 * width / 40, y: 9 * height / 20 },
-    Music: { x: 9 * width / 10, y: height / 8 },
+    Finance: { x: 16 * width / 20, y: height / 8 },
+    Music: { x: 18 * width / 20, y: height / 8 },
 
-    Utilities: { x: 4 * width / 16, y: height / 3 },
-    Travel: { x: width / 4, y: 2* height / 3 },
-    Sports: { x: 4 * width / 8, y: height / 3 },
-    Business: { x: width / 2, y: 2* height / 3 },
-    Entertainment: { x: 6 * width / 8, y: height / 3 },
-    Navigation: { x: 3 * width / 3, y: 2* height / 3 },
-    Navigation: { x: 15 * width / 16, y: height / 3 },
 
-    Education: { x: 5 * width / 8, y: height / 3 },
-    Lifestyle: { x: width / 4, y: 2* height / 3 },
-    News: { x: 8 * width / 8, y: height / 3 },
-    Book: { x: 6 * width / 3, y: 2* height / 3 },
-    Medical: { x: 20 * width / 16, y: height / 3 },
-    'Social Networking': { x: 20 * width / 16, y: height / 3 },
-    'Health & Fitness': { x: 20 * width / 16, y: height / 3 },
-    'Photo & Video': { x: 20 * width / 16, y: height / 3 },
-    'Food & Drink': { x: 20 * width / 16, y: height / 3 }
+    Utilities: { x: 1.3*width / 40, y: height / 2 },
+    Travel: { x: 4*width / 20, y: height / 2  },
+    Sports: { x: 7 * width / 20, y: height / 2  },
+    Business: { x:10*width / 20, y:height / 2  },
+    Entertainment: { x:  13 * width / 20, y: height / 2  },
+    Navigation: { x: 16 * width / 20, y: height / 2  },
+    Education: { x: 18 * width / 20, y: height / 2 },
+
+    Lifestyle: { x: 1.3*width / 40, y: height/1.5  },
+    News: { x: 2*width / 20, y: height/1.5 },
+    Book: { x: 4 * width / 20, y: height/1.5 },
+    Medical: { x: 6 * width / 20, y: height/1.5 },
+    'Social Networking': { x: 9*width / 20, y: height/1.5 },
+    'Health & Fitness': { x: 12 * width / 20, y: height/1.5 },
+    'Photo & Video': { x: 15 * width / 20, y: height/1.5 },
+    'Food & Drink': { x: 18 * width / 20, y: height/1.5}
   }
 
   var starTitle = {
-    // 1: { x: width / 5, y: 8 * height / 20 },
-    // 2: { x: 13 * width / 40, y: height / 9 },
-    // 3: { x: width / 2, y: 8 * height / 20 },
-    // 4: { x: 27 * width / 40, y: height / 9 },
-    // 5: { x: 4 * width / 5, y: 8 * height / 20 }
-    0: { x: width / 3, y: 2* height / 3 },
-    0.5: { x: 3 * width / 8, y: height / 3 },
-    1: { x: width / 3, y: 2* height / 3 },
-    2: { x: 3 * width / 8, y: height / 3 },
-    3: { x: width / 2, y: 2* height / 3 },
-    4: { x: 5 * width / 8, y: height / 3 },
-    5: { x: 2 * width / 3, y: 2* height / 3 },
-    1.5: { x: width / 3, y: 2* height / 3 },
-    2.5: { x: 3 * width / 8, y: height / 3 },
-    3.5: { x: width / 2, y: 2* height / 3 },
-    4.5: { x: 5 * width / 8, y: height / 3 }
+    "0": { x: 3* width / 20, y:  height / 8 },
+    "0.5": { x: 5 * width / 20, y: height / 8 },
+    "1": { x: 7* width / 20, y: height / 8 },
+    "1.5": { x: 10 * width / 20, y: height / 8 },
+    2: { x: 13*width / 20, y: height / 8 },
+    2.5: { x: 16* width / 20, y:  height / 8 },
+    3: { x: 3 * width / 20, y: height / 2 },
+    3.5: { x: 7* width / 20, y: height / 2 },
+    4: { x: 10 * width / 20, y: height / 2 },
+    4.5: { x: 13*width / 20, y: height / 2 },
+    5: { x: 16 * width / 20, y: height / 2}
   }
 
   // @v4 strength to apply to the position forces
@@ -300,11 +289,11 @@ function bubbleChart() {
   }
 
   function nodeStarPosX(d) {
-    return starCenters[Math.floor(d.stars)].x;
+    return starCenters[d.stars].x;
   }
 
   function nodeStarPosY(d) {
-    return starCenters[Math.floor(d.stars)].y;
+    return starCenters[d.stars].y;
   }
 
   /*
@@ -395,19 +384,8 @@ function bubbleChart() {
       .attr('y', function (d) { return title[d].y; })
       .attr('text-anchor', 'middle')
       .text(function (d) {
-        if (d == 1) {
-          return '⭐';
-        } else if (d == 2) {
-          return '⭐⭐';
-        } else if (d == 3) {
-          return '⭐⭐⭐';
-        } else if (d == 4) {
-          return '⭐⭐⭐⭐';
-        } else if (d == 5) {
-          return '⭐⭐⭐⭐⭐';
-        } else {
-          return d;
-        }
+        return d;
+
       });
   }
 
@@ -419,16 +397,14 @@ function bubbleChart() {
     // change outline to indicate hover state.
     d3.select(this).attr('stroke', 'black');
 
-    var content = '<span class="name">Restaurant Category: </span><span class="value">' +
-                  d.name +
-                  '</span><br/>' +
-                  '<span class="name">State: </span><span class="value">' +
+    var content =
+                  '<span class="name">Category: </span><span class="value">' +
                   d.state +
                   '</span><br/>' +
                   '<span class="name">Reviews: </span><span class="value">' +
                   addCommas(d.reviews) +
                   '</span><br/>' +
-                  '<span class="name">Average Stars: </span><span class="value">' +
+                  '<span class="name">Average Rating: </span><span class="value">' +
                   d.stars +
                   '</span>';
 

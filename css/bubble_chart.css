@@ -1,5 +1,5 @@
 #toolbar a, a:visited, a:active {
-  color: #444;
+  color: #989898;
 }
 
 .container {
@@ -21,7 +21,7 @@
 }
 
 .button.active {
-  background: green;
+  background: yellow;
 }
 
 
